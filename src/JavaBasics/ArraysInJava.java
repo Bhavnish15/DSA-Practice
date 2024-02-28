@@ -79,17 +79,49 @@ public class ArraysInJava {
         return squreArr;
     }
 
+    static int[] MakePrifixSum(int[]arr){
+        int n = arr.length;
+        int[] prefix = new int[n];
+        prefix[0] = arr[0];
+
+        for(int i = 1; i < n; i++){
+            prefix[i] = prefix[i-1] + arr[i];
+        }
+        return prefix;
+    }
+
+    static int[] MakePrifixSumWithoutNewArray(int[]arr){
+        int n = arr.length;
+        for(int i = 1; i < n; i++){
+            arr[i] = arr[i] + arr[i-1];
+        }
+        return arr;
+    }
+
+    static int subArray(int[] arr, int l, int r){
+        int n = arr.length; int sum = 0;
+
+            for(int j = l; j < r; j++){
+                sum =  sum + arr[j];
+            }
+
+        return sum;
+    }
+
 
 
 
     public static void main(String[] args) {
-        int[] nums = {-10,-5,1,2,3};
+        int[] nums = {2,1,3,4,5};
 
 //        sortingZeros(nums);
 //        againSorting(nums);
 //        OddEvenArrangements(nums);
-        squareArray(nums);
-        printArray(squareArray(nums));
+//        squareArray(nums);
+//        MakePrifixSum(nums);
+//        MakePrifixSumWithoutNewArray(nums);
+        System.out.println(subArray(nums,2,4));
+//        printArray()
 
 
     }
