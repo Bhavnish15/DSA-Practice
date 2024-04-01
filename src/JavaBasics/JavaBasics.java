@@ -133,10 +133,47 @@ public class JavaBasics {
         return result;
     }
 
+    static void spiralMatrix(int[][]matrix) {
+        // code here
+        int start_row = 0; int end_row = matrix.length - 1;
+        int start_col = 0; int end_col = matrix[0].length - 1;
+
+        while(start_row <= end_row && start_col <= end_col) {
+            //upper row
+            for (int col = start_col; col <= end_col; col++) {
+                System.out.print(matrix[start_row][col] + " ");
+            }
+            start_row++;
+            //Right Col
+            for (int row = start_row; row <= end_row; row++) {
+                System.out.print(matrix[row][end_col] + " ");
+            }
+            end_col--;
+            //Bottom Row
+            for (int col = end_col; col >= start_col; col--) {
+                System.out.print(matrix[end_row][col] + " ");
+            }
+            end_row--;
+            //Left Column
+            for (int row = end_row; row >= start_row; row--) {
+                System.out.print(matrix[row][start_col] + " ");
+            }
+            start_col++;
+            System.out.println();
+        }
+
+    }
+
     public static void main (String[] args){
         //Arrays
-
+        Scanner sc = new Scanner(System.in);
         int num[] = {1,5,6,1};
+        int[][] arr = {{1,5,7,9,10,11}, {6,10,12,13,20,21}, {9,25,29,30,32,41}, {15,55,59,63,68,70}, {40,70,79,81,95,105}};
+
+        spiralMatrix(arr);
+
+
+
 
 
 

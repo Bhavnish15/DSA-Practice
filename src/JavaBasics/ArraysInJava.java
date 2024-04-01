@@ -9,6 +9,7 @@ public class ArraysInJava {
         for(int i = 0; i < arr.length; i++){
             System.out.print(arr[i]+" ");
         }
+        System.out.println();
     }
 
     static void sortingZeros(int[] arr) {
@@ -91,28 +92,49 @@ public class ArraysInJava {
     }
 
     static int[] MakePrifixSumWithoutNewArray(int[]arr){
-        int n = arr.length;
-        for(int i = 1; i < n; i++){
-            arr[i] = arr[i] + arr[i-1];
+        for(int i = 1; i < arr.length; i++){
+            arr[i] += arr[i-1];
         }
         return arr;
     }
 
     static int subArray(int[] arr, int l, int r){
         int n = arr.length; int sum = 0;
-
             for(int j = l; j < r; j++){
                 sum =  sum + arr[j];
             }
-
         return sum;
+    }
+
+    static int TotalSum(int[] arr){
+        int totalSum = 0;
+        for(int i = 0; i < arr.length; i++){
+            totalSum += arr[i];
+        }
+        return totalSum;
+    }
+
+    static boolean equalSumPartition(int[] arr) {
+        // Total Sum
+       int totalSum = TotalSum(arr);
+        // Prefix sum
+        int prefixSum = 0;
+        for(int i = 0; i < arr.length; i++){
+            prefixSum += arr[i];
+            int suffixSum = totalSum - prefixSum;
+            if(suffixSum == prefixSum){
+                return true;
+            }
+        }
+        return false;
     }
 
 
 
 
     public static void main(String[] args) {
-        int[] nums = {2,1,3,4,5};
+        Scanner sc = new Scanner(System.in);
+        int[] nums = {1,2,3,3,2,1};
 
 //        sortingZeros(nums);
 //        againSorting(nums);
@@ -120,9 +142,7 @@ public class ArraysInJava {
 //        squareArray(nums);
 //        MakePrifixSum(nums);
 //        MakePrifixSumWithoutNewArray(nums);
-        System.out.println(subArray(nums,2,4));
-//        printArray()
-
-
+        System.out.println(equalSumPartition(nums));
+//        printArray();
     }
 }
